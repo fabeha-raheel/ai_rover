@@ -54,6 +54,7 @@ class HumanTracker():
                 self.kill = True
                 sys.exit("Make sure that MAVROS is running...")
             self.init_detector()
+            rospy.on_shutdown(self.shutdown_tracker_ugv)
 
     def init_detector(self):
 
@@ -63,6 +64,10 @@ class HumanTracker():
         self.net.setInputMean((127.5, 127.5, 127.5))
         self.net.setInputSwapRB(True)
 
+    def shutdown_tracker_ugv(self):
+        self.stop_motors()
+        self.kill
+        
     def init_rover(self):
 
         rospy.init_node('control_test', anonymous=True)
