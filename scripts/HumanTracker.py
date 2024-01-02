@@ -21,8 +21,8 @@ class HumanTracker():
         self.thres = 0.6 # Threshold to detect object
         self.nms_threshold = 0.2
 
-        self.configPath = 'include/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt'
-        self.weightsPath = 'include/frozen_inference_graph.pb'
+        self.configPath = '/home/df/catkin_ws/src/ai_rover/include/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt'
+        self.weightsPath = '/home/df/catkin_ws/src/ai_rover/include/frozen_inference_graph.pb'
 
         self.classNames= ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'street sign', 
              'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'hat', 
