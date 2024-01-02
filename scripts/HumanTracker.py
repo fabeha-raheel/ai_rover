@@ -101,7 +101,7 @@ class HumanTracker():
         
         while True:
             error = self.cx - self.sp_x
-            motor_out = (self.Kp * error) + self.motor_bias
+            motor_out = (self.Kp * error) + self.motor_bias 
             
             if motor_out > self.motor_max:
                 motor_out = self.motor_max
