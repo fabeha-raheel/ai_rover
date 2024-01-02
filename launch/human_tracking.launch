@@ -8,6 +8,6 @@
 
 
     <!-- Human Tracking Node -->
-    <node name="HumanTracking" pkg="ai_rover" type="human_tracking.py" output="screen" required="true" launch-prefix="gnome-terminal --tab --" />
+    <node name="HumanTracking" pkg="ai_rover" type="human_tracking.py" output="screen" launch-prefix="gnome-terminal --tab --" />
 
 </launch>
