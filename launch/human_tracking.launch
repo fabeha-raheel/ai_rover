@@ -8,6 +8,6 @@
 
 
     <!-- Landmine Detection Node -->
-    <node name="HumanTracking" pkg="ai_rover" type="human_tracking.py" respawn="True" output="screen" />
+    <node name="HumanTracking" pkg="ai_rover" type="human_tracking.py" output="screen" />
 
 </launch>

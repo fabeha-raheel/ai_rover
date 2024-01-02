@@ -83,9 +83,18 @@ class HumanTracker():
         self.control_thread = threading.Thread(target=self.motor_control_target, daemon=True)
         self.control_thread.start()
 
+    def stop_motors(self):
+
+        mssg = OverrideRCIn()
+        mssg.channels[self._throttle_channel] = 1500
+        mssg.channels[self._steering_channel] = 1500
+        self.rc_override.publish(mssg)
+        self.disarm()
+        print("Motor control killed.")
+
     def motor_control_target(self):
         
-        while not self.kill:
+        while True:
             error = self.cx - self.sp_x
             motor_out = (self.Kp * error) + self.motor_bias
             
@@ -103,11 +112,7 @@ class HumanTracker():
             time.sleep(0.2)
 
             if self.kill:
-                mssg.channels[self._throttle_channel] = 1500
-                mssg.channels[self._steering_channel] = 1500
-                self.rc_override.publish(mssg)
-                self.disarm()
-                print("Motor control killed.")
+                self.stop_motors()
 
     def human_detection_target(self):
         main_detection_id = 0
