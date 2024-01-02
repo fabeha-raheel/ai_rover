@@ -72,7 +72,7 @@ class HumanTracker():
 
         rospy.init_node('control_test', anonymous=True)
         try:
-            self.rc_override = rospy.Publisher('mavros/rc/override', OverrideRCIn)
+            self.rc_override = rospy.Publisher('mavros/rc/override', OverrideRCIn, queue_size=1)
             self.arm()
         except:
             self.kill = True
@@ -173,6 +173,7 @@ class HumanTracker():
         try:
             armService = rospy.ServiceProxy('/mavros/cmd/arming', CommandBool)
             armResponse = armService(True)
+            print(armResponse)
             rospy.loginfo(armResponse)
         except rospy.ServiceException as e:
             print("Service call failed: %s" %e)
